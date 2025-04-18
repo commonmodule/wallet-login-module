@@ -1,6 +1,6 @@
-import { AuthTokenManager } from "@common-module/app";
-import { AppCompConfig, ConfirmDialog } from "@common-module/app-components";
-import { WalletSessionManager } from "@common-module/wallet";
+import { AuthTokenManager } from "@commonmodule/app";
+import { AppCompConfig, ConfirmDialog } from "@commonmodule/app-components";
+import { WalletSessionManager } from "@commonmodule/wallet";
 import {
   Config,
   EstimateGasParameters,

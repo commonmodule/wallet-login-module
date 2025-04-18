@@ -1,4 +1,4 @@
-import { IWalletModuleConfig, WalletModuleConfig } from "@common-module/wallet";
+import { IWalletModuleConfig, WalletModuleConfig } from "@commonmodule/wallet";
 
 class WalletLoginConfig {
   public messageForWalletLogin = "Login with Crypto Wallet";

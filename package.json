@@ -1,5 +1,5 @@
 {
-  "name": "@common-module/wallet-login",
+  "name": "@commonmodule/wallet-login",
   "author": "yj.gaia",
   "homepage": "https://personas.gaia.cc/yj.gaia",
   "version": "0.2.4",
@@ -7,7 +7,7 @@
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "dependencies": {
-    "@common-module/wallet": "^0.2.4"
+    "@commonmodule/wallet": "^0.2.5"
   },
   "devDependencies": {}
 }

@@ -1,4 +1,4 @@
-import { IWalletModuleConfig } from "@common-module/wallet";
+import { IWalletModuleConfig } from "@commonmodule/wallet";
 declare class WalletLoginConfig {
     messageForWalletLogin: string;
     executeAfterLogin: (token: string) => Promise<void>;
