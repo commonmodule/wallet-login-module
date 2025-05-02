@@ -1,8 +1,8 @@
 import WalletLoginConfig from "./WalletLoginConfig.js";
 import WalletLoginManager from "./WalletLoginManager.js";
 
-class WalletAPIService {
-  public async generateWalletLoginNonce(walletAddress: string): Promise<
+export default class WalletAPIService {
+  public static async generateWalletLoginNonce(walletAddress: string): Promise<
     { nonce: string; issuedAt: string }
   > {
     const response = await fetch(
@@ -33,7 +33,7 @@ class WalletAPIService {
     };
   }
 
-  public async walletLogin(
+  public static async walletLogin(
     walletAddress: string,
     signedMessage: string,
   ): Promise<string> {
@@ -61,5 +61,3 @@ class WalletAPIService {
     return data.token;
   }
 }
-
-export default new WalletAPIService();
