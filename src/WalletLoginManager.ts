@@ -14,6 +14,7 @@ import type {
   DecodeEventLogReturnType,
 } from "viem";
 import WalletLoginModal from "./components/WalletLoginModal.js";
+import WalletAPIService from "./WalletAPIService.js";
 
 class WalletLoginManager extends AuthTokenManager<{
   loginStatusChanged: (loggedIn: boolean) => void;
@@ -57,14 +58,20 @@ class WalletLoginManager extends AuthTokenManager<{
     return walletAddress;
   }
 
-  public logout() {
+  public async logout() {
     WalletSessionManager.disconnect();
 
     const currentIsLoggedIn = this.isLoggedIn();
+    const currentWalletAddress = this.getLoggedInAddress();
+    const currentToken = this.token;
 
     this.token = undefined;
     this.store.remove("loggedInWallet");
     this.store.remove("loggedInAddress");
+
+    if (currentWalletAddress && currentToken) {
+      await WalletAPIService.walletLogout(currentWalletAddress, currentToken);
+    }
 
     if (currentIsLoggedIn !== this.isLoggedIn()) {
       this.emit("loginStatusChanged", this.isLoggedIn());

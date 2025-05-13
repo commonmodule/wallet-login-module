@@ -60,4 +60,24 @@ export default class WalletAPIService {
     }
     return data.token;
   }
+
+  public static async walletLogout(
+    walletAddress: string,
+    token: string,
+  ): Promise<void> {
+    const response = await fetch(
+      `${WalletLoginConfig.apiBaseURL}/wallet-logout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${WalletLoginManager.token}`,
+        },
+        body: JSON.stringify({ walletAddress, token }),
+      },
+    );
+    if (!response.ok) {
+      throw new Error("Failed to logout");
+    }
+  }
 }
