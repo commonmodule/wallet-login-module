@@ -61,10 +61,7 @@ export default class WalletAPIService {
     return data.token;
   }
 
-  public static async walletLogout(
-    walletAddress: string,
-    token: string,
-  ): Promise<void> {
+  public static async walletLogout(): Promise<void> {
     const response = await fetch(
       `${WalletLoginConfig.apiBaseURL}/wallet-logout`,
       {
@@ -73,7 +70,6 @@ export default class WalletAPIService {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${WalletLoginManager.token}`,
         },
-        body: JSON.stringify({ walletAddress, token }),
       },
     );
     if (!response.ok) {

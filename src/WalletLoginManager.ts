@@ -58,20 +58,15 @@ class WalletLoginManager extends AuthTokenManager<{
     return walletAddress;
   }
 
-  public async logout() {
+  public logout() {
     WalletSessionManager.disconnect();
 
     const currentIsLoggedIn = this.isLoggedIn();
-    const currentWalletAddress = this.getLoggedInAddress();
-    const currentToken = this.token;
+    if (currentIsLoggedIn) WalletAPIService.walletLogout();
 
     this.token = undefined;
     this.store.remove("loggedInWallet");
     this.store.remove("loggedInAddress");
-
-    if (currentWalletAddress && currentToken) {
-      await WalletAPIService.walletLogout(currentWalletAddress, currentToken);
-    }
 
     if (currentIsLoggedIn !== this.isLoggedIn()) {
       this.emit("loginStatusChanged", this.isLoggedIn());
