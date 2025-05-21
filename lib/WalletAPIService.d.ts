@@ -1,10 +1,9 @@
-declare class WalletAPIService {
-    generateWalletLoginNonce(walletAddress: string): Promise<{
+export default class WalletAPIService {
+    static generateWalletLoginNonce(walletAddress: string): Promise<{
         nonce: string;
         issuedAt: string;
     }>;
-    walletLogin(walletAddress: string, signedMessage: string): Promise<string>;
+    static walletLogin(walletAddress: string, signedMessage: string): Promise<string>;
+    static walletLogout(): Promise<void>;
 }
-declare const _default: WalletAPIService;
-export default _default;
 //# sourceMappingURL=WalletAPIService.d.ts.map

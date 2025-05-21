@@ -33,7 +33,7 @@ export default class WalletLoginModal extends StructuredModal {
     this.appendToFooter(
       new Button(".cancel", {
         title: "Cancel",
-        onClick: () => this.remove(),
+        onPress: () => this.remove(),
       }),
     );
 
